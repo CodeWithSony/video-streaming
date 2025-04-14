@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/router";
 
 export default function AdminPage() {
   const [form, setForm] = useState({
@@ -11,7 +10,6 @@ export default function AdminPage() {
     budget: "",
   });
 
-  const router = useRouter();
   const [message, setMessage] = useState("");
   const [videoFile, setVideoFile] = useState<File | null>(null);
   const [videoUrl, setVideoUrl] = useState<string>("");
@@ -70,8 +68,9 @@ export default function AdminPage() {
       setVideoUrl(uploadData.videoUrl);
       setImageUrl(uploadData.imageUrl);
       setMessage("Movie added and files uploaded successfully!");
-    } catch (error: any) {
-      setError(error.message || "An error occurred.");
+    } catch (error: unknown) {
+      console.log(error);
+      // setError(error.message || " error occurred.");
     } finally {
       setLoading(false);
     }

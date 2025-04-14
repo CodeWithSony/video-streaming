@@ -1,10 +1,10 @@
-declare namespace google {
-  namespace payments {
-    namespace api {
-      class PaymentsClient {
-        constructor(config: { environment: "TEST" | "PRODUCTION" });
-        loadPaymentData(paymentDataRequest: any): Promise<any>;
-      }
-    }
+export {};
+
+declare global {
+  interface Global {
+    mongooseGlobal?: {
+      conn: import("mongoose").Connection | null;
+      promise: Promise<import("mongoose").Connection> | null;
+    };
   }
 }

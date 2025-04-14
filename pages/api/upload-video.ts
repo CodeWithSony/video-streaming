@@ -23,25 +23,24 @@ export const config = {
 };
 
 const uploadVideo = async (req: NextApiRequest, res: NextApiResponse) => {
-  // Only allow POST requests
   await dbConnect();
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
   try {
-    // Connect to the database
-
     console.log("Cloudinary Config Loaded ✅");
 
-    // Set up Formidable to handle file uploads
     const form = formidable({ multiples: true });
 
-    // Parse the request and get fields and files
     const [fields, files] = await new Promise<[Fields, Files]>(
       (resolve, reject) => {
         form.parse(req, (err, fields, files) => {
-          if (err) return reject(err);
+          if (err) {
+            // console.log("Error parsing form:", err);
+            // return reject(err);
+            console.log(err);
+          }
           resolve([fields, files]);
         });
       }
@@ -50,7 +49,6 @@ const uploadVideo = async (req: NextApiRequest, res: NextApiResponse) => {
     console.log("Parsed fields:", fields);
     console.log("Parsed files:", files);
 
-    // Validate that movieId is provided
     if (
       !fields.movieId ||
       !Array.isArray(fields.movieId) ||
@@ -59,11 +57,8 @@ const uploadVideo = async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(400).json({ error: "No movie ID provided" });
     }
 
-    // Safely extract the movie ID string from the array
     const movieIdStr = fields.movieId[0];
 
-    // If the movieId is a JSON string (e.g. '{"id": "60c72b2f9e7d4e2f88b12345"}'),
-    // try to parse it; otherwise, assume it's already a plain string.
     let movieId: string;
     try {
       const movieData = JSON.parse(movieIdStr);
@@ -72,18 +67,15 @@ const uploadVideo = async (req: NextApiRequest, res: NextApiResponse) => {
       movieId = movieIdStr;
     }
 
-    // Validate the movieId format (should be a 24-character hex string)
     if (!/^[0-9a-fA-F]{24}$/.test(movieId)) {
       return res.status(400).json({ error: "Invalid movie ID format" });
     }
 
-    // Validate that a video file was uploaded
     const videoFile = files.video?.[0];
     if (!videoFile) {
       return res.status(400).json({ error: "No video file uploaded" });
     }
 
-    // Upload video to Cloudinary
     let videoResult;
     try {
       videoResult = await cloudinary.v2.uploader.upload(videoFile.filepath, {
@@ -98,7 +90,6 @@ const uploadVideo = async (req: NextApiRequest, res: NextApiResponse) => {
         .json({ error: "Error uploading video to Cloudinary" });
     }
 
-    // Optionally, upload an image if provided
     let imageUrl = null;
     const imageFile = files.image?.[0];
     if (imageFile) {
@@ -120,23 +111,19 @@ const uploadVideo = async (req: NextApiRequest, res: NextApiResponse) => {
       }
     }
 
-    // Check if the movie exists in the database
     const movie = await Movie.findById(movieId);
     if (!movie) {
       return res.status(400).json({ error: "Movie not found" });
     }
 
-    // Save the video information in the database
     const videoDoc = new Video({ movieId, videoUrl: videoResult.secure_url });
     await videoDoc.save();
 
-    // Save the image information if available
     if (imageUrl) {
       const imageDoc = new Image({ movieId, imageUrl });
       await imageDoc.save();
     }
 
-    // Respond with success
     return res.status(200).json({
       message: "Upload successful!",
       videoUrl: videoResult.secure_url,

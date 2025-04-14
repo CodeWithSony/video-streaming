@@ -13,13 +13,12 @@ interface MongooseGlobal {
   conn: Connection | null;
   promise: Promise<Connection> | null;
 }
-
 // Use global cache to prevent multiple connections
 declare global {
   var mongooseGlobal: MongooseGlobal | undefined;
 }
 
-let cached: MongooseGlobal = global.mongooseGlobal || {
+const cached: MongooseGlobal = global.mongooseGlobal || {
   conn: null,
   promise: null,
 };

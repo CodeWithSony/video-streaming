@@ -2,7 +2,9 @@ import Input from "@/components/Input";
 import { useCallback, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { signIn } from "next-auth/react";
+
+import Image from "next/image";
+import { ChangeEvent } from "react";
 
 export default function Auth() {
   const router = useRouter();
@@ -46,7 +48,7 @@ export default function Auth() {
 
   const login = useCallback(async () => {
     try {
-      await signIn("credentials", {
+      await axios.post("/api/auth/login", {
         email,
         password,
         redirect: false,
@@ -75,7 +77,7 @@ export default function Auth() {
     <div className="relative netflix-bg h-full w-full bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/f268d374-734d-474f-ad13-af5ba87ef9fc/web/IN-en-20250210-TRIFECTA-perspective_92338d5d-6ccd-4b1a-8536-eb2b0240a55e_large.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
       <div className="bg-black w-full h-full lg:bg-opacity-50">
         <nav>
-          <img
+          <Image
             src="/images/logo.jpg"
             alt="netflix"
             width={100}
@@ -92,7 +94,7 @@ export default function Auth() {
               {variant == "Register" && (
                 <Input
                   label="username"
-                  onChange={(ev: any) => {
+                  onChange={(ev: ChangeEvent<HTMLInputElement>) => {
                     setName(ev.target.value);
                   }}
                   id="name"
@@ -102,7 +104,7 @@ export default function Auth() {
               )}
               <Input
                 label="email"
-                onChange={(ev: any) => {
+                onChange={(ev: ChangeEvent<HTMLInputElement>) => {
                   setEmail(ev.target.value);
                 }}
                 id="email"
@@ -111,7 +113,7 @@ export default function Auth() {
               />
               <Input
                 label="password"
-                onChange={(ev: any) => {
+                onChange={(ev: ChangeEvent<HTMLInputElement>) => {
                   setPassword(ev.target.value);
                 }}
                 id="password"

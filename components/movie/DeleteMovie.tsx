@@ -7,11 +7,8 @@ import React from "react";
 
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 import moment from "moment";
-import { useRouter } from "next/router";
 import axios from "axios";
 import { XCircleIcon } from "lucide-react";
-import { get } from "http";
-
 interface Movie {
   _id: string;
   name: string;
@@ -30,7 +27,7 @@ const MyDataTable = () => {
 
   const [editData, setEditData] = useState<Movie | null>(null);
 
-  const router = useRouter();
+  // const router = useRouter();
 
   useEffect(() => {
     fetchData();

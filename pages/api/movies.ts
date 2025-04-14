@@ -13,7 +13,7 @@ export default async function handler(
       const movies = await Movie.find();
       return res.status(200).json(movies);
     } catch (error) {
-      return res.status(500).json({ error: "Failed to fetch movies." });
+      console.log(error, "Failed to fetch movies.");
     }
   } else if (req.method === "POST") {
     const { name, singer, cast, releaseDate, budget } = req.body;
@@ -33,7 +33,7 @@ export default async function handler(
       await newMovie.save();
       return res.status(201).json(newMovie);
     } catch (error) {
-      return res.status(500).json({ error: "Failed to create the movie" });
+      console.log(error, "Failed to create the movie");
     }
   } else if (req.method === "PUT") {
     const { id } = req.query;
@@ -75,7 +75,8 @@ export default async function handler(
 
       return res.status(200).json({ message: "Movie deleted successfully" });
     } catch (error) {
-      return res.status(500).json({ error: "Failed to delete the movie" });
+      // return res.status(500).json({ error: "Failed to delete the movie" });
+      console.log(error, "Failed to delete the movie ");
     }
   }
 

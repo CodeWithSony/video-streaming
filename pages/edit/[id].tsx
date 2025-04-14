@@ -3,7 +3,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 
 const EditMovie = () => {
-  const [movie, setMovie] = useState<any>(null);
+  const [movie, setMovie] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [singer, setSinger] = useState<string>("");
   const [cast, setCast] = useState<string>("");
@@ -60,6 +60,7 @@ const EditMovie = () => {
         setError("Failed to update movie.");
       }
     } catch (err) {
+      console.log(err);
       setError("Error updating movie.");
     }
   };
