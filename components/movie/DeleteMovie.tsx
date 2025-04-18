@@ -19,6 +19,12 @@ interface Movie {
   videoUrl?: string;
 }
 
+interface Video {
+  movieId: string;
+  videoUrl: string;
+  // Add other properties as needed
+}
+
 const MyDataTable = () => {
   const [data, setData] = useState<Movie[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -51,12 +57,15 @@ const MyDataTable = () => {
       }
 
       const mergedData: Movie[] = moviesResponse?.map((movie: Movie) => {
-        const video = videosResponse.find((v: any) => v.movieId === movie._id);
+        const video = videosResponse.find(
+          (v: Video) => v.movieId === movie._id
+        );
         return { ...movie, videoUrl: video?.videoUrl || "" };
       });
 
       setData(mergedData);
     } catch (error) {
+      console.log(error, "error");
     } finally {
       setLoading(false);
     }
@@ -68,11 +77,9 @@ const MyDataTable = () => {
 
       setMovies((prevMovies) => prevMovies.filter((movie) => movie._id !== id));
       fetchData();
-    } catch (err: any) {
-      console.error("Error deleting movie:", err.response?.data || err.message);
-      alert(
-        `Error deleting movie: ${err.response?.data?.error || err.message}`
-      );
+    } catch (err: unknown) {
+      console.error("Error deleting movie:"), err;
+      alert(`Error deleting movie}`);
     }
   };
   async function handleRowClick(id: string) {

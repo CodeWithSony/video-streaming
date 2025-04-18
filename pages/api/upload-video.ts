@@ -37,9 +37,8 @@ const uploadVideo = async (req: NextApiRequest, res: NextApiResponse) => {
       (resolve, reject) => {
         form.parse(req, (err, fields, files) => {
           if (err) {
-            // console.log("Error parsing form:", err);
-            // return reject(err);
-            console.log(err);
+            console.log("Error parsing form:", err);
+            return reject(err);
           }
           resolve([fields, files]);
         });
@@ -64,6 +63,7 @@ const uploadVideo = async (req: NextApiRequest, res: NextApiResponse) => {
       const movieData = JSON.parse(movieIdStr);
       movieId = movieData.id;
     } catch (err) {
+      console.log(err, "error");
       movieId = movieIdStr;
     }
 

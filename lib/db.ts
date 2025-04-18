@@ -14,7 +14,9 @@ interface MongooseGlobal {
   promise: Promise<Connection> | null;
 }
 // Use global cache to prevent multiple connections
+// let mongooseGlobal;
 declare global {
+  // eslint-disable-next-line no-var
   var mongooseGlobal: MongooseGlobal | undefined;
 }
 
