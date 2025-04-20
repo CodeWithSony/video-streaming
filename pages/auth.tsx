@@ -20,32 +20,6 @@ export default function Auth() {
     );
   }, []);
 
-  // const login = useCallback(async () => {
-  //   try {
-  //     await axios.post("/api/auth/login", {
-  //       email,
-  //       password,
-  //     });
-  //     router.push("/");
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }, [email, password, router]);
-  // 8;
-
-  // const register = useCallback(async () => {
-  //   try {
-  //     await axios.post("/api/auth/signup", {
-  //       email,
-  //       name,
-  //       password,
-  //     });
-  //     await login();
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }, [email, name, password, login]);
-
   const login = useCallback(async () => {
     try {
       await axios.post("/api/auth/login", {
@@ -54,7 +28,7 @@ export default function Auth() {
         redirect: false,
         callbackUrl: "/",
       });
-      router.push("/");
+      router.push("/admin/add-movie");
     } catch (error) {
       console.log(error);
     }

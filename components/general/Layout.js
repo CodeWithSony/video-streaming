@@ -1,51 +1,16 @@
 import { useState, useEffect } from "react";
-// import { Dialog, Menu, Transition } from "@headlessui/react";
 import { useRouter } from "next/router";
-
-// import { MagnifyingGlassIcon, UserCircleIcon } from "@heroicons/react/20/solid";
 
 import {
   ClipboardDocumentListIcon,
   TrashIcon,
 } from "@heroicons/react/24/outline";
 
-// const user = {
-//   name: "Whitney Francis",
-//   email: "whitney.francis@example.com",
-//   imageUrl:
-//     "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-// };
-
-// const navigation = [
-//   {
-//     name: "Inboxes",
-//     href: "#",
-//     children: [
-//       { name: "Technical Support", href: "#" },
-//       { name: "Sales", href: "#" },
-//       { name: "General", href: "#" },
-//     ],
-//   },
-//   { name: "Reporting", href: "#", children: [] },
-//   { name: "Settings", href: "#", children: [] },
-// ];
-
-// const userNavigation = [
-//   { name: "Your Profile", href: "#" },
-//   { name: "Sign out", href: "#" },
-// ];
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-// import { useSession } from "next-auth/react";
-// import tokenRefresh from "../../lib/tokenRefresh";
 
 export default function Layout({ children }) {
-  // const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  // const { data: session, status } = useSession();
-
   const router = useRouter();
   const [tabs, SetTabss] = useState([
     {

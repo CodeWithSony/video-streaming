@@ -76,21 +76,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const initialPillTabs = [
-  // {
-  //   name: "Add Movie",
-  //   href: "/admin/add-movie",
-  //   code: "add-movie",
-  //   current: false,
-  // },
-  // {
-  //   name: "Delete Movie",
-  //   href: "/admin/delete-movie",
-  //   code: "delete-movie",
-  //   current: false,
-  // },
-  // Add more tabs here if needed
-];
+const initialPillTabs = [];
 
 export default function Tab() {
   const [currentPage, setCurrentPage] = useState();
