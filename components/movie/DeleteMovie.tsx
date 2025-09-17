@@ -185,7 +185,7 @@ const MyDataTable = () => {
             }}
             width="200"
             height="300"
-            className="m-5 w-full h-[200px] object-cover rounded-2xl
+            className=" w-full sm:w-[200px] h-[180px] object-cover rounded-md
 "
             onPlay={() => handlePlay(index)}
             controls
@@ -208,7 +208,7 @@ const MyDataTable = () => {
                                  transition-colors duration-200 flex items-center justify-center"
             onClick={() => handleRowClick(row._id)}
           >
-            <PencilIcon className="mr-1 text-green-500 h-7 w-8" />
+            <PencilIcon className="mr-1 text-green-500 h-7 w-5" />
           </button>
 
           <button
@@ -217,7 +217,7 @@ const MyDataTable = () => {
                                  transition-colors duration-200 flex items-center justify-center"
             onClick={() => handleDelete(row._id)}
           >
-            <TrashIcon className="mr-1 text-red-500 h-8 w-8" />
+            <TrashIcon className="mr-1 text-red-500 h-7 w-5" />
           </button>
         </div>
       ),
@@ -242,8 +242,9 @@ const MyDataTable = () => {
         progressPending={loading}
         pagination
         highlightOnHover
+        responsive
       />
-      <dialog ref={editRef} className="rounded-lg shadow-lg bg-white p-6">
+      <dialog ref={editRef} className="rounded-lg overflow-hidden shadow-lg bg-white p-6 h-[83%] w-[30%] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div className="flex justify-between items-center gap-x-10  ">
           <h1 className="font-bold leading-6 text-gray-500">Edit Movie </h1>
           <button
@@ -313,7 +314,7 @@ const MyDataTable = () => {
             />
 
             {/* Save & Cancel Buttons */}
-            <div className="flex justify-end gap-2 mt-4">
+            <div className="flex justify-between gap-2 mt-4">
               <button
                 type="button"
                 className="bg-gray-300 px-4 py-2 rounded"
@@ -326,7 +327,7 @@ const MyDataTable = () => {
                 className="bg-blue-500 text-white px-4 py-2 rounded"
                 onClick={handleUpdate}
               >
-                Save Changes
+                Save 
               </button>
             </div>
           </form>

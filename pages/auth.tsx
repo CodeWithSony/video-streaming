@@ -60,7 +60,12 @@ export default function Auth() {
           />
         </nav>
         <div className="flex justify-center ">
-          <div className="bg-black px-16 py-16 self-center mt-2 lg:w-2/5 lg:max-md bg-opacity-70">
+          {/* <div className="bg-black px-16 py-16 self-center mt-2 lg:w-2/5 lg:max-md bg-opacity-70"> */}
+          <div className="
+
+
+ bg-black bg-opacity-70 px-6 py-8 mt-2 self-center w-full sm:w-11/12 md:w-3/4 lg:w-2/4 lg:p-12">
+
             <h2 className="text-white text-4xl mb-8 font-semibold">
               {variant == "login" ? "Sign in" : "Register"}
             </h2>
@@ -71,7 +76,7 @@ export default function Auth() {
                   onChange={(ev: ChangeEvent<HTMLInputElement>) => {
                     setName(ev.target.value);
                   }}
-                  id="name"
+                  id="name" 
                   type="text"
                   value={name}
                 />
@@ -81,12 +86,12 @@ export default function Auth() {
                 onChange={(ev: ChangeEvent<HTMLInputElement>) => {
                   setEmail(ev.target.value);
                 }}
-                id="email"
+                id="email" 
                 type="email"
                 value={email}
               />
               <Input
-                label="password"
+                label="password" 
                 onChange={(ev: ChangeEvent<HTMLInputElement>) => {
                   setPassword(ev.target.value);
                 }}
@@ -97,7 +102,7 @@ export default function Auth() {
             </div>
             <button
               onClick={variant == "login" ? login : register}
-              className="bg-red-600 py-3 text-white rounded-md w-full mt-10 focus:bg-red-700 transition"
+              className="bg-red-600 py-6 text-white rounded-md w-full mt-10 focus:bg-red-700 transition"
             >
               {variant == "login" ? "Login" : "Sign up"}
             </button>

@@ -220,7 +220,9 @@ const MyDataTable = () => {
         </div>
 
         <div className="ml-20 mr-20">
-          <h2 className="text-xl font-semibold mb-4">Trending Now</h2>
+<h2 className="text-3xl font-bold mb-6 text-center">
+  Trending Now
+</h2>
           <button
             onClick={() => scroll("left")}
             className="absolute left-2 top-[85%] -translate-y-1/2 bg-black/50 p-3 rounded-full z-10"

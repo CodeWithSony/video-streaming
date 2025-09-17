@@ -109,9 +109,9 @@ export default function Tab() {
 
   return (
     <Layout>
-      <div className="bg-white px-2 shadow-sm sticky top-0 z-40">
+      <div className="bg-red-400 px-2 shadow-sm sticky top-0 z-40">
         <nav
-          className="isolate flex rounded-lg justify-start space-x-8"
+          className="isolate flex rounded-lg justify-start  space-x-8"
           aria-label="Tabs"
         >
           {pillTabs.map((tab) => (
