@@ -1,4 +1,15 @@
+# 🎬 Video-streaming app
 
+A responsive and fully-functional Netflix clone built with modern web technologies. Users can browse, view, and stream movies and TV shows with a sleek UI inspired by Netflix.
+
+## 🌐 Live Demo
+
+👉 [Visit the live app here](https://video-streaming-phi.vercel.app/)
+
+## Screenshots
+
+### 1. Login Page  
+![Login Page](./screenshot/login.png)  
 
 ## Getting Started
 
@@ -14,11 +25,9 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-## Learn More
-s of Next.js.
 
 api routes
-http://localhost:3000/admin/auth  - for signup and login
-http://localhost:3000/admin/add-movie        - to add movies
-http://localhost:3000/admin/delete-movie        -to manage movies (to update and delete movies)
+https://video-streaming-phi.vercel.app/admin/auth  - for signup and login
+https://video-streaming-phi.vercel.app/admin/add-movie        - to add movies
+https://video-streaming-phi.vercel.app/admin/delete-movie        -to manage movies (to update and delete movies)
+
