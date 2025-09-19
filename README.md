@@ -17,7 +17,7 @@ A responsive and fully-functional Netflix clone built with modern web technologi
 ![Login Page](./screenshots/video-streaming-login-page.png)  
 
 ### 4. Register Page
-![Register Page](./screenshots/video-streaming-register-page.png)
+![Register Page](./screenshots/video-streaming-registerPage.png)
 
 ### 5. Add Movie Page
 ![Add Movie Page](./screenshots/admin-add-movie.png)  
@@ -47,6 +47,7 @@ api routes
 https://video-streaming-phi.vercel.app/admin/auth  - for signup and login
 https://video-streaming-phi.vercel.app/admin/add-movie        - to add movies
 https://video-streaming-phi.vercel.app/admin/delete-movie        -to manage movies (to update and delete movies)
+
 
 
 
