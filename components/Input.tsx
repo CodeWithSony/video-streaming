@@ -20,7 +20,7 @@ const Input: React.FC<InputProps> = ({ label, value, onChange, id, type }) => {
         type={type}
         value={value}
         onChange={onChange}
-        className="px-4 py-4 bg-gray-800 text-white rounded-md lg:py-6"
+        className="px-4 py-4 bg-gray-800 text-white rounded-md"
       />
     </div>
   );

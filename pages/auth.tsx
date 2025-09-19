@@ -64,12 +64,13 @@ export default function Auth() {
           <div className="
 
 
- bg-black bg-opacity-70 px-6 py-8 mt-2 self-center w-full sm:w-11/12 md:w-3/4 lg:w-2/4 lg:p-12">
+ bg-black bg-opacity-70 px-6 py-4 mt-2 self-center h-[80%] w-full sm:w-11/12 md:w-3/4 lg:w-2/4 lg:p-12">
 
             <h2 className="text-white text-4xl mb-8 font-semibold">
               {variant == "login" ? "Sign in" : "Register"}
             </h2>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 box-border
+">
               {variant == "Register" && (
                 <Input
                   label="username"
